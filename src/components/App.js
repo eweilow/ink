@@ -60,8 +60,16 @@ export default class App extends PureComponent {
 		this.handleSetRawMode(false);
 	}
 
+	isRawModeSupported(stdin) {
+		return stdin.isTTY;
+	}
+
 	handleSetRawMode = isEnabled => {
 		const {stdin} = this.props;
+		if (!this.isRawModeSupported(stdin)) {
+			// Do nothing if stdin doesn't support raw mode
+			return;
+		}
 
 		stdin.setEncoding('utf8');
 
