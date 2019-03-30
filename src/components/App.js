@@ -120,7 +120,7 @@ export default class App extends PureComponent {
 		if (this.isRawModeSupported(this.props.stdin)) {
 			this.handleSetRawMode(false);
 		}
-		
+
 		this.props.onExit(error);
 	}
 }
